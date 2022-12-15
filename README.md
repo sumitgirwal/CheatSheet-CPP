@@ -1,10 +1,52 @@
 # CheatSheet-CPP
 Quick CPP Codes
-# Cheat-Sheet
-CPP Cheat Sheet for CP
 
-#### 1. 10^9 long long
-#### 2. Sum of 1 to n even & odd numbers
+
+#### Resources
+- [Learn CP](https://github.com/hkirat/Algorithmic-Resources)
+- [Learn Sorting](https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/)
+
+
+#### 1. `10^9` use long long int
+
+Basic template for long long
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+#define ll long long
+#define int ll
+
+int32_t main() {
+    int t; cin >> t;
+    while (t--) {
+            int n; cin>>n;
+            vector<int> a(n);
+            for(int i=0;i<n;i++) cin>>a[i];
+            int count=0;
+            int temp=0;
+            for(int i=0;i<n;i++){
+                int x; cin>>x;
+                if(x<=(a[i]-temp)) count++;
+                temp = a[i];
+            }
+            cout<<count<<endl;
+    }
+    return 0;
+}
+
+// Input:
+// string bin_string = "10101010";
+
+// Function call:
+// stoi(bin_string, 0, 2);
+
+// Output:
+// 170
+```
+
+#### 2. Sum of 1 to n even & odd numbers formula
 ```bash
 Sum of even : (n*n)
 Sum of odd : (n*(n+1))
@@ -14,6 +56,7 @@ Sum of odd : (n*(n+1))
 ```bash
 Using map : ans += (i.second*(i.second - 1))/2;
 ```
+
 #### 4. COOL NAME CODECHEF
 ```cpp
 #include<bits/stdc++.h>
@@ -37,6 +80,8 @@ int main()
     return 0;
 }
 ```
+
+
 #### 5. Non-Negative Product
 ```cpp
 #include<bits/stdc++.h>
@@ -75,6 +120,8 @@ int32_t main()
 }
 
 ```
+
+
 #### 6. Two Different Palindromes
 ```cpp
 #include<iostream>
@@ -98,6 +145,8 @@ int main()
     }
 }
 ```
+
+
 #### 7. Even Splits
 ```cpp
 #include<bits/stdc++.h>
@@ -124,12 +173,12 @@ int32_t main()
 }
 ```
 
-###### Stick length part
-'''bash
+#### 8. Stick length part
+```bash
 for _ in range(int(input())):
     n, k = map(int, input().split())
     print(1 if n%k > 0 else 0)
-'''
+
 
 for _ in range(int(input())):
     n = int(input())
@@ -138,28 +187,10 @@ for _ in range(int(input())):
         continue
     print(*range(2, n+1, 2), *range(1, n+1, 2))
 
-
-#### Resources
-- [Learn CP](https://github.com/hkirat/Algorithmic-Resources)
-- [Learn Sorting](https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/)
-
-#### 1. 10^9 long long
-#### 2. Sum of 1 to n even & odd numbers
-```bash
-Sum of even : (n*n)
-Sum of odd : (n*(n+1))
 ```
 
-#### 3. Find sum of all pair in array
-```bash
-Using map : ans += (i.second*(i.second - 1))/2;
-```
-#### 4.
-#### 5.Small fact
+#### 9.Small fact
 ```cpp
-// We have populated the solutions for the 10 easiest problems for your support.
-// Click on the SUBMIT button to make a submission to this problem.
-
 #include <bits/stdc++.h>
 #include <boost/multiprecision/cpp_int.hpp>
 #include <iostream>
@@ -183,7 +214,8 @@ int main() {
     return 0;
 }
 ```
-##### 6. Always use string to input digits
+
+##### 10. Always use string to input digits
 ```cpp
 #include <iostream>
 #include <string>
@@ -208,43 +240,10 @@ int32_t main() {
 }
 ```
 
-###### long long
-```bash
-#include <iostream>
-#include <vector>
-using namespace std;
-#define ll long long
-#define int ll
-int32_t main() {
-    int t; cin >> t;
-    while (t--) {
-            int n; cin>>n;
-            vector<int> a(n);
-            for(int i=0;i<n;i++) cin>>a[i];
-            int count=0;
-            int temp=0;
-            for(int i=0;i<n;i++){
-                int x; cin>>x;
-                if(x<=(a[i]-temp)) count++;
-                temp = a[i];
-            }
-            cout<<count<<endl;
-    }
-    return 0;
-}
 
-```
 
-Input:
-    string bin_string = "10101010";
-
-    Function call:
-    stoi(bin_string, 0, 2);
-
-    Output:
-    170
-````
-
+#### 11. string : I am smith => smith am I
+```cpp
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -271,37 +270,46 @@ int32_t main()
     return 0;
 }
 
+// Python code
+// s = "I am devnick verma"
+// lst = s.split(' ')
+// # lst ['I', 'am', 'devnick', 'verma']
 
-#include <bits/stdc++.h>
+// lst = lst[::-1]
+// # lst ['verma', 'devnick', 'am', 'I']
+
+// " ".join(lst)
+// # 'verma devnick am I'
+```
+
+#### 12. count every character frequence
+```cpp
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    
+int32_t main()
+{
     // input
     string str;
     getline(cin,str);
     
-    int n = str.size();
-    string final="";
-    string temp="";
+    int t = str.size();
+    map<char,int> mp;
     
     // processing
-    for(int i=0; i<n; i++){
-        
-        if(str[i]==' '){
-            final = " "+temp+final;
-            temp = "";
-        }else{
-            temp = temp+str[i];
+    for(int i=0; i<t; i++) {
+        if(str[i]!=' ') {
+            mp[str[i]]++;
         }
     }
-
-    if(temp != " "){
-        final = " "+temp+final;
+    
+    //output
+    for(auto i:mp) {
+        cout << i.first << " = " << i.second << " ";
     }
-
-    // output    
-    cout<<final<<endl;
-
     return 0;
 }
+
+// o/p count every character frequence
+```
+
