@@ -6,7 +6,7 @@ Quick CPP Codes
 - [Learn CP](https://github.com/hkirat/Algorithmic-Resources)
 - [Learn Sorting](https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/)
 - [LeetCode Sheet](https://www.piratekingdom.com/leetcode/cheat-sheet)
-
+- [Roadmap](https://www.piratekingdom.com/curriculum/software-development/)
 
 #### 1. `10^9` use long long int
 
